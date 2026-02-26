@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<!-- Siempre debemos colocar el idioma que predomina en el contenido de la página, en este caso `es` por español -->
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="empleos" content="">
     <title>DevJobs - Empleos</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <header>
@@ -17,28 +18,38 @@
             DevJobs
         </h1>
         
+        <!-- Si el enlace no lleva a ningún lado (por temas de que aún no tenemos la página creada), lo que se suele hacer es colocar un `#`. Esto permite que la página no se recargue al hacer clic en el enlace. Cuando publicamos una página web a internet NO debemos tener links que no lleven a ningún lado, esto lo dejamos así porque aún estamos en modo desarrollo. -->
         <nav>
-            <a href="">Inicio</a>
-            <a href="https://midu.dev" target="_blank" rel="noopener noreferrer">Empleos</a>
-            <a href="">Empresas</a>
-            <a href="">Salarios</a>
+            <!-- Si queremos que el enlace lleve a otra página dentro de nuestro proyecto, debemos indicarle la ruta relativa al archivo. En este caso, el archivo `index.html` está en la misma carpeta que el archivo `empleos.html`, por lo que la ruta relativa es `index.html` -->
+            <a href="index.html">Buscar</a>
+            <!-- Hay una propiedad llamada `aria-current` que nos permite indicarle a los motores de búsqueda que la página actual es la que se encuentra en el enlace. Esto es algo que a la hora de programar siempre nos olvidamos de colocar, pero te lo dejo para que sepas que existe y, si es posible y no se te olvida, agregarlo :) -->
+            <a href="#" aria-current="page">Empleos</a>
+            <a href="#">Empresas</a>
+            <a href="#">Salarios</a>
         </nav>
 
-        <div>
+        <!-- Agregué estilos inline pero lo ideal es que sea por medio de clases de CSS. Fue para simplificar. -->
+        <div style="display: flex; align-items: center; gap: .5rem;">
             <button>Subir CV</button>
-            <img src="" alt="">
+            <!-- Siempre que usemos una etiqueta de imagen, debemos indicarle el atributo `alt` que nos permite darle un texto alternativo a la imagen en caso de que no aparezca. Esto hará que si la imagen no carga por alguna razón, aparezca un texto que diga a qué hace referencia la imagen. Por otro lado, si la imagen es decorativa, es decir, si no tiene ningún propósito funcional, podemos dejar el atributo `alt` vacío. A nivel de accesibilidad, es importante que las imágenes tengan un atributo `alt` para que los motores de búsqueda puedan entender mejor el contenido de la página. Alguien no vidente puede tener contexto de la imagen a través del atributo `alt`. -->
+             <!-- Otra cosa a tener en cuenta cuando trabajamos con imágenes: Hay que poner el atributo `width` y `height` para que el navegador sepa el tamaño de aspecto de la imagen (calcula si es 1:1, 16:9, etc..). Funciona por si demora la carga de la imagen, lo que que hace el navegador es dejar ese hueco libre para cuando carga la imagen. -->
+            <img src="image.png" alt="Avatar del usuario" style="width: 32px; height: 32px; border-radius: 999px;" width="32" height="32">
         </div>
     </header>
     <main>
-        <section>
+        <!-- Agregué estilos inline pero lo ideal es que sea por medio de clases de CSS. Fue para simplificar. -->
+        <section style="padding-inline: 1rem;">
             <h1>Encuentra tu proximo trabajo</h1>
             <p>Explora miles de oportunidades en el sector tecnológico</p>
             <form action="" role="search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
                 <input type="text" placeholder="Buscar trabajos, empresas o habilidades">
             </form>
-            <div>
-                <Select name="" id="">
+            <!-- Pongo los estilos en línea pero lo ideal es en CSS. Hacemos esto para que no se rompa en pantallas pequeñas -->
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <!-- Por ahora está bien que dejemos el `name` vacío. Pero cuando empecemos a trabajar con JavaScript en el siguiente módulo, será necesario porque es una propiedad que nos permite identificar el valor seleccionado en el elemento. El `id` si no lo estamos usando no es necesario colocarlo. Es importante en su gran mayoría de veces para trabajar con JavaScript. -->
+                <!-- Puse un valor en `name` para que veas como quedaría -->
+                <Select name="tecnologia">
                     <option value="">Tecnología</option>
                     <option value="javascript">JavaScript</option>
                     <option value="python">Python</option>
@@ -46,20 +57,21 @@
                     <option value="react">React</option>
                     <option value="nodejs">Node.js</option>
                 </Select>
-                <Select name="" id="">
+                <Select name="ubicacion">
                        <option value="ubicacion">Ubicación</option>
                        <option value="cdmx">Ciudad de México</option>
                        <option value="guadalajara">Guadalajara</option>
                        <option value="monterrey">Monterrey</option>
                        <option value="barcelona">Barcelona</option>
                 </Select>
-                <Select name="" id="">
+                <Select name="contrato">
                        <option value="">Tipo de contrato</option>
-                       <option value="">Jornada completa</option>
-                       <option value="">Medio tiempo</option>
-                       <option value="">Por hora</option>
+                       <!-- Puse un valor en `value` para que veas como quedaría. Los valores NO puedes estar separados por un espacio, en su lugar usamos `-` -->
+                       <option value="jornada-completa">Jornada completa</option>
+                       <option value="medio-tiempo">Medio tiempo</option>
+                       <option value="por-hora">Por hora</option>
                 </Select>
-                <Select name="" id="">
+                <Select name="experiencia">
                        <option value="">Nivel de experiencia</option>
                        <option value="junior">Junior</option>
                        <option value="mid">Mid-level</option>
@@ -70,75 +82,98 @@
         </section>
 
         <section class="results">
-            <h2>Resultados de busqueda</h2>
-            <article>
-                <div>
-                    <h3>Ingeniero de sistemas</h3>
-                    <h4>Tech Solutions Inc. | Remoto</h4>
-                    <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
-                </div>
-                <button>Aplicar</button>
-            </article>
-            <article>
-                <div>
-                    <h3>Ingeniero de sistemas</h3>
-                    <h4>Tech Solutions Inc. | Remoto</h4>
-                    <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
-                </div>
-                <button>Aplicar</button>
-            </article>
-            <article>
-                <div>
-                    <h3>Ingeniero de sistemas</h3>
-                    <h4>Tech Solutions Inc. | Remoto</h4>
-                    <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
-                </div>
-                <button>Aplicar</button>
-            </article>
-            <article>
-                <div>
-                    <h3>Ingeniero de sistemas</h3>
-                    <h4>Tech Solutions Inc. | Remoto</h4>
-                    <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
-                </div>
-                <button>Aplicar</button>
-            </article>
-            <article>
-                <div>
-                    <h3>Ingeniero de sistemas</h3>
-                    <h4>Tech Solutions Inc. | Remoto</h4>
-                    <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
-                </div>
-                <button>Aplicar</button>
-            </article>
+            <h2>Resultados de búsqueda</h2>
+            <!-- Si pensamos en los empleos que mostramos como una lista de resultados, tiene sentido que creemos una lista de ellos. Esto quiero que quede claro: No hay una única manera de hacer las cosas, sobre todo en temas de estructura de HTML, cuando las decisiones que tomamos son por interpretación del contenido (como en este caso), está bien interpretarlo como una lista o como lo tenias anteriormente. Solo quiero hacerlo así para que sepas que también en válido. -->
+            <ul>
+                <li>
+                    <article>
+                        <div>
+                            <h3>Ingeniero de sistemas</h3>
+                            <!-- En vez de usar `h4`, que se usan para títulos. Usaremos un `small`, que se usa para indicar que el texto que tiene dentro es complementario al contenido de ese bloque. Podemos definir que el lugar y el tipo de jornada de trabajo es una información que complementa al puesto laboral. -->
+                             <!-- 
+                            Tenemos título del puesto (h3)
+                            Tenemos descripción del puesto (p)
+                            Tenemos empresa (small) <- Es información complementaria.
+                            [Si tuviesemos salario podría ser algo complementario también]
+                             -->
+                            <small>Tech Solutions Inc. | Remoto</small>
+                            <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
+                        </div>
+                        <button>Aplicar</button>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <div>
+                            <h3>Ingeniero de sistemas</h3>
+                            <small>Tech Solutions Inc. | Remoto</small>
+                            <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
+                        </div>
+                        <button>Aplicar</button>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <div>
+                            <h3>Ingeniero de sistemas</h3>
+                            <small>Tech Solutions Inc. | Remoto</small>
+                            <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
+                        </div>
+                        <button>Aplicar</button>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <div>
+                            <h3>Ingeniero de sistemas</h3>
+                            <small>Tech Solutions Inc. | Remoto</small>
+                            <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
+                        </div>
+                        <button>Aplicar</button>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <div>
+                            <h3>Ingeniero de sistemas</h3>
+                            <small>Tech Solutions Inc. | Remoto</small>
+                            <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScipt, React y Node.js. El candidato idea debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicaci</p>
+                        </div>
+                        <button>Aplicar</button>
+                    </article>
+                </li>
+            </ul>
 
             <nav>
-                <a href="">
+                <!-- Cuando el `anchor` no tiene contenido de texto dentro que indique el propósito del enlace, es recomendable usar el atributo `aria-label` y `title`. 
+                `title` es el atributo que se muestra cuando el usuario pasa el mouse sobre el enlace.
+                `aria-label` es el atributo que se muestra cuando el usuario usa un lector de pantalla y describe el propósito del enlace. -->
+                <a href="#" title="Ir a la primera página" aria-label="Ir a la primera página">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left-pipe">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M7 6v12" /><path d="M18 6l-6 6l6 6" />
                     </svg>
                 </a>
-                <a href="">
+                <a href="#" title="Ir a la página anterior" aria-label="Ir a la página anterior">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M15 6l-6 6l6 6" />
                     </svg>
                 </a>
-                <a href="index.html">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
-                <a class="is-active" href="">4</a>
-                <a href="">5</a>
-                <a href="">6</a>
-                <a href="">7</a>
-                <a href="">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a class="is-active" href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#" title="Ir a la página siguiente" aria-label="Ir a la página siguiente">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M9 6l6 6l-6 6" />
                     </svg>
                 </a>
-                <a href="">
+                <a href="#" title="Ir a la última página" aria-label="Ir a la última página">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right-pipe">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M6 6l6 6l-6 6" /><path d="M17 5v13" />

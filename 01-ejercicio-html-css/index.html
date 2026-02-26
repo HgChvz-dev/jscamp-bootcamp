@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Siempre debemos colocar el idioma que predomina en el contenido de la página, en este caso `es` por español -->
+<html lang="es">
 <head>
     <title>DevJobs - Inicio</title>
     <meta charset="UTF-8">
     <meta name="description" content="Encuentra las mejores ofertas de trabajo para desarrolladores en DevJobs">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <header>
@@ -17,10 +18,12 @@
         </h1>
         
         <nav>
-            <a href="">Buscar</a>
-            <a href="https://midu.dev" target="_blank" rel="noopener noreferrer">Empleos</a>
-            <a href="">Empresas</a>
-            <a href="">Salarios</a>
+            <!-- Si el enlace no lleva a ningún lado (por temas de que aún no tenemos la página creada), lo que se suele hacer es colocar un `#`. Esto permite que la página no se recargue al hacer clic en el enlace. Cuando publicamos una página web a internet NO debemos tener links que no lleven a ningún lado, esto lo dejamos así porque aún estamos en modo desarrollo. -->
+            <a href="#" aria-current="page">Buscar</a>
+            <!-- Si queremos que el enlace lleve a otra página dentro de nuestro proyecto, debemos indicarle la ruta relativa al archivo. En este caso, el archivo `empleos.html` está en la misma carpeta que el archivo `index.html`, por lo que la ruta relativa es `empleos.html` -->
+            <a href="empleos.html">Empleos</a>
+            <a href="#">Empresas</a>
+            <a href="#">Salarios</a>
         </nav>
 
         <div>
