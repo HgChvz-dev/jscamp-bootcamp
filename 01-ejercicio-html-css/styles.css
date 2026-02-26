@@ -43,6 +43,7 @@ body{
 
 header{
     display: flex;
+    flex-wrap: wrap; /* Hace que el header se ajuste a pantallas pequeñas y haga un salto de línea */
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
@@ -79,6 +80,7 @@ h1{
 
 nav{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
@@ -113,9 +115,10 @@ main{
         justify-content: center;
         text-align: center;
         align-items: center;
-        height: 500px;
+        /* height: 500px; */ /* NUNCA debemos usar height fija. Esto se rompe fácilmente si agregamos contenido adicional o si achicamos la pantalla. En cambio ponemos usar `min-height`. Si el height en menos a 500px, lo fijamos en 500px, y si es mayor, se ajusta automáticamente */
+        min-height: 500px;
         padding-bottom: 0;
-        margin-bottom: -7rem;
+        /* margin-bottom: -7rem; */ /* Lo mismo, no debemos usar margin-bottom negativo porque al achicar la pantalla se rompe fácilmente */
 
         & > img{
             position: absolute;
@@ -200,6 +203,7 @@ main{
 
         article{
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             align-items: start;
             padding: 1.5rem 2rem;
@@ -209,6 +213,11 @@ main{
             height: auto;
             width: 100%;
             max-width: 42rem;
+
+            /* En pantallas pequeñas, el artículo se muestra verticalmente, esto hace que el texto no quede muy chico */
+            @media (width > 768px) {
+                flex-direction: row;
+            }
 
             div{
                 flex: 1;
@@ -221,7 +230,7 @@ main{
                 margin-bottom: 0.25rem;
             }
 
-            h4{
+            small{
                 color: var(--text-muted);
                 font-weight: 250;
                 font-size: 0.8rem;
@@ -248,6 +257,21 @@ main{
             margin-bottom: 1.5rem;
             max-width: 42rem;
             margin-top: -3rem;
+        }
+
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        li{
+            width: 100%;
+            max-width: 42rem;
         }
     }
 
