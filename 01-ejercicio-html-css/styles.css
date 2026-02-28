@@ -43,26 +43,18 @@ body{
 
 header{
     display: flex;
-    flex-wrap: wrap; /* Hace que el header se ajuste a pantallas pequeñas y haga un salto de línea */
+    flex-wrap: wrap; 
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: .5rem;
     background: var(--background);
     padding: .5rem 1rem;
-    margin-bottom: 0;
-    
-    div {
-        button {
-            padding: 0.5rem 1rem;
-            background-color: #0f2b45;
-            color: #1072d2;   
-        }
+}
 
-        button:nth-child(2){
-            background-color: #3b4550;
-            color: var(--text-primary);
-        }
-    }
+.header-left{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }
 
 h1{
@@ -115,10 +107,8 @@ main{
         justify-content: center;
         text-align: center;
         align-items: center;
-        /* height: 500px; */ /* NUNCA debemos usar height fija. Esto se rompe fácilmente si agregamos contenido adicional o si achicamos la pantalla. En cambio ponemos usar `min-height`. Si el height en menos a 500px, lo fijamos en 500px, y si es mayor, se ajusta automáticamente */
-        min-height: 500px;
-        padding-bottom: 0;
-        /* margin-bottom: -7rem; */ /* Lo mismo, no debemos usar margin-bottom negativo porque al achicar la pantalla se rompe fácilmente */
+        min-height: 300px;
+        padding-bottom: 3rem;
 
         & > img{
             position: absolute;
@@ -131,11 +121,17 @@ main{
             mask-image: linear-gradient(to bottom, rgba(16, 25, 34, 1) 5%, rgba(16, 25, 34, 0)80%);
         }
 
+        div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
         h1{
             display: flex;
             align-items: center;
             font-size: 3rem;
-            margin-top: -5rem;
+            margin-top: 0;
         }
 
         p{
@@ -147,7 +143,6 @@ main{
     section:nth-child(2){
         padding-inline: 1rem;
         padding-top: 2rem;
-        
 
         &>header{
             gap: 2px;
@@ -158,6 +153,7 @@ main{
                 margin-bottom: 1rem;
                 font-weight: 700;
             }
+            
 
             p{
                 text-align: center;
@@ -177,6 +173,7 @@ main{
             article{
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 background-color: var(--card-bg);
                 padding: 2rem;
                 margin-bottom: 16px;
@@ -214,7 +211,6 @@ main{
             width: 100%;
             max-width: 42rem;
 
-            /* En pantallas pequeñas, el artículo se muestra verticalmente, esto hace que el texto no quede muy chico */
             @media (width > 768px) {
                 flex-direction: row;
             }
@@ -251,12 +247,14 @@ main{
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-inline: 1rem;
 
         h2{
             width: 100%;
-            margin-bottom: 1.5rem;
             max-width: 42rem;
-            margin-top: -3rem;
+            padding-top: .5rem;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
         }
 
         ul{
@@ -272,33 +270,6 @@ main{
         li{
             width: 100%;
             max-width: 42rem;
-        }
-    }
-
-    nav > a{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        text-decoration: none;
-        color: var(--text-muted);
-        border-radius: 0.375rem;
-        transition: all 0.3s;
-        margin-bottom: 1rem;
-        &:hover, &:focus{
-            background-color: #fff;
-            outline: 2px solid var(--primary-light);
-            outline-offset: 2px;
-            color: var(--primary-light);
-        }
-        &:active{
-            transform: scale(0.90);
-        }
-        &.is-active{
-            background-color: var(--primary-light);
-            color: white;
-            pointer-events: none;
         }
     }
 }
@@ -331,11 +302,9 @@ button{
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     border: none;
+    outline: none;
     cursor: pointer;
-    color: var(--text-primary);
-    background-color: var(--btn-primary);
-    font-size: 0.75rem;
-    font-weight: 700;
+    font: inherit;
 
     &:hover, &:focus{
         background-color: var(--primary-hover);
@@ -350,6 +319,33 @@ button{
         opacity: 0.5;
         pointer-events: none;
     }
+}
+
+.btn-primary{
+    color: var(--text-primary);
+    background-color: var(--btn-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.btn-secundary{
+    color: #1072d2;
+    background-color: #0f2b45;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+}
+
+.btn-login{
+    color: var(--text-primary);
+    background-color: #3b4550;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+}
+
+.img-avatar{
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
 }
 
 select{
@@ -369,5 +365,43 @@ select{
     &:focus{
         outline: 2px solid #1173d4;
         outline-offset: 2px;
+    }
+}
+
+a[aria-current="page"]{
+    color: var(--primary-light);
+    font-weight: 500;
+}
+
+.pagination{
+    a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        text-decoration: none;
+        color: var(--text-muted);
+        border-radius: 0.375rem;
+        transition: all 0.3s;
+        margin-bottom: 1rem;
+            
+        &:hover,
+        &:focus {
+            background-color: #fff;
+            outline: 2px solid var(--primary-light);
+            outline-offset: 2px;
+            color: var(--primary-light);
+        }
+    
+        &:active {
+            transform: scale(0.90);
+        }
+    
+        &.is-active {
+            background-color: var(--primary-light);
+            color: white;
+            pointer-events: none;
+        }
     }
 }
