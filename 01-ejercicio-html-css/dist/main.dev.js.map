@@ -1,1 +1,0 @@
-{"version":3,"sources":["main.js"],"names":[],"mappings":";;AAAA;;AACA;;AACA;;AACA","sourcesContent":["import './apply-button.js'\r\nimport './fetch-data.js'\r\nimport './filters.js'\r\nimport './devjobs-avatar-element.js'"],"file":"main.dev.js"}
