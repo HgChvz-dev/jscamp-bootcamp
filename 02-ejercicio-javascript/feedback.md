@@ -1,9 +1,7 @@
-Hola! Muy bien hecho :) Quedé muy feliz con el resultado de tu ejercicio.
+Felicidades crack! Has hecho todo muy bien, estoy orgulloso.
 
-Agregamos algunos comentarios y cambios en el código para expandir un poco más el conocimiento de HTML más allá de lo que hemos visto en clase.
+El diseño quedó muy limpio, y el código súper legible, 10 de 10!
 
-Espero se haya entendido todo y si no es así, nos puedes preguntar sin problema por Discord o por aquí.
+Agregué un comentario en `fetch-data.js` sobre el uso de `DocumentFragment` para mejorar el rendimiento, esto si bien no lo dimos en el curso, creo que está bueno saberlo :)
 
-Por otro lado, dejamos creado un archivo llamado `dudas.md` para que puedas dejarnos cualquier duda del ejercicio (repito, más allá de que siempre nos puedes preguntar por Discord).
-
-Un saludo grande y felicidades por tu primer ejercicio! Vas muy bien
+A seguir así que vas genial!

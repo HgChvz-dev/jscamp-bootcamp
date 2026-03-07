@@ -113,11 +113,12 @@ const dbFilter = document.querySelector('#db-filter')
 
 function filterJobs() {
     const jobs = document.querySelectorAll('.job-listing-card')
-    const searchTerm = searchInput.value.toLowerCase()
+    const searchTerm = searchInput.value.toLowerCase().trim() // Agregamos un .trim() para evitar que el usuario busque espacios en blanco
     const selectedLocation = locationFilter.value
     const selectedContract = contractFilter.value
     const selectedLevel = levelFilter.value
 
+    /* Muy bien pensado */
     const selectedTechs = [frontFilter.value, backFilter.value, dbFilter.value]
         .filter(value => value !== '')
 
@@ -140,6 +141,7 @@ function filterJobs() {
     })
 }
 
+/* Muy bien aplicado el optional chaining */
 searchInput?.addEventListener('input', filterJobs)
 locationFilter?.addEventListener('change', filterJobs)
 contractFilter?.addEventListener('change', filterJobs)

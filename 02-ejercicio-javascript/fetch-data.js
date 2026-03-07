@@ -10,6 +10,16 @@ function renderJobs(jobs) {
     const endIndex = startIndex + RESULTS_PER_PAGE
     const jobsToShow = jobs.slice(startIndex, endIndex)
 
+    /* 
+    Aquí podemos aplicar un documentFragment para mejorar el rendimiento.
+    DocumentFragment es una caja virtual donde podemos ir agregando elementos del DOM sin necesidad de renderizarlos en el HTML hasta que los necesitemos.
+    
+    Antes, lo que sucedía era que por cada job que se evaluaba en el bucle, se creaba un elemento li y se agregaba al DOM, lo que causaba que el navegador tuviera que ocupar recursos renderizando cada elemento individualmente.
+
+    De esta manera, en vez de renderizar 10 veces elementos en el DOM, lo que hacemos es hacerlo una sola vez, agregando todos los `li` en la caja virtual, y por medio de `container.appendChild(jobsDocumentFragment)` agregar todos los elementos en un solo pintado.
+    */
+    const jobsDocumentFragment = document.createDocumentFragment()
+
     jobsToShow.forEach(job => {
         const list = document.createElement('li')
         list.className = 'job-listing-card'
@@ -32,9 +42,10 @@ function renderJobs(jobs) {
                 </a>
             </article>
         `
-        container.appendChild(list)
+        jobsDocumentFragment.appendChild(list)
     })
 
+    container.appendChild(jobsDocumentFragment)
     renderPagination(jobs)
 }
 
@@ -52,6 +63,7 @@ function renderPagination(jobs) {
         pageButton.addEventListener('click', (btn) => {
             btn.preventDefault()
             currentPage = i
+            /* Excelente! Muy buena manera de hacerlo :) */
             renderJobs(jobs)
         })
 
