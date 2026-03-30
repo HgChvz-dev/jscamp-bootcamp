@@ -10,6 +10,7 @@ function renderJobs(jobs) {
   var startIndex = (currentPage - 1) * RESULTS_PER_PAGE;
   var endIndex = startIndex + RESULTS_PER_PAGE;
   var jobsToShow = jobs.slice(startIndex, endIndex);
+  var jobsDocumentFragment = document.createDocumentFragment();
   jobsToShow.forEach(function (job) {
     var list = document.createElement('li');
     list.className = 'job-listing-card';
@@ -18,8 +19,9 @@ function renderJobs(jobs) {
     list.dataset.technology = job.data.technology;
     list.dataset.contrato = job.data.contrato;
     list.innerHTML = "\n            <article>\n                <div>\n                    <h3>".concat(job.titulo, "</h3>\n                    <small>").concat(job.empresa, " | ").concat(job.ubicacion, "</small>\n                    <p>").concat(job.descripcion, "</p>\n                    <span class=\"job-tag\">Tecnologias: ").concat(job.data.technology, "</span>\n                    <span class=\"job-tag\">Contrato: ").concat(job.data.contrato, "</span>\n                    <span class=\"job-tag\">Nivel: ").concat(job.data.nivel, "</span>\n                </div>\n                <a href=\"detalles-ofertas.html\">\n                    <button class=\"btn-apply-job\">Aplicar</button>\n                </a>\n            </article>\n        ");
-    container.appendChild(list);
+    jobsDocumentFragment.appendChild(list);
   });
+  container.appendChild(jobsDocumentFragment);
   renderPagination(jobs);
 }
 
