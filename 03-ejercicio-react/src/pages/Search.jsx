@@ -1,12 +1,10 @@
 import { useEffect } from "react"
-import { useRouter } from "../hooks/useRouter.jsx"
 import { useFilters } from "../hooks/useFilters.jsx"
 import { SearchFormSection } from "../components/SearchFormSection.jsx"
 import { JobListings } from "../components/JobListings.jsx"
 import { Pagination } from "../components/Pagination.jsx"
 
 export function SearchPage() {
-    const { searchParams } = useRouter();
     const {
         loading,
         error,

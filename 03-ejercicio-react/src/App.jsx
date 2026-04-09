@@ -18,6 +18,7 @@ function App() {
     <>
       <Header />
       <Breadcrumb />
+      {/* Excelente idea! */}
       <PageTransition key={currentPath}>
           <Route path="/" component={HomePage} />
           <Route path="/search" component={SearchPage} />
